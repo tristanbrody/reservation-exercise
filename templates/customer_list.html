@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Customers{% endblock %}
+{% block content %}
+
+<a class="btn btn-primary" style="float: right" href="/add/">Add a Customer</a></p>
+
+<h1>Customers</h1>
+
+<h4>Our Top Customers!</h4>
+<ul style="column-count: 4">
+  {% for customer in topCustomers %}
+  <li><a href="/{{ customer.id }}/">{{ customer.firstname }} {{customer.lastname}}</a></li>
+  {% endfor %}
+</ul>
+
+<form action="" id="customer-search-form">
+  <label for="customer-search">Search for a customer</label>
+  <input type="text" id="customer-search" name="customer-search">
+  <button class="btn btn-primary">Search</button>
+</form>
+
+<div id="search-results">
+
+</div>
+
+<ul style="column-count: 4">
+  {% for customer in customers %}
+  <li><a href="/{{ customer.id }}/">{{ customer.fullName }}</a></li>
+  {% endfor %}
+</ul>
+
+<script src="/app.js"></script>
+{% endblock %}
